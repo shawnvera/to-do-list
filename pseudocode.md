@@ -28,9 +28,11 @@ The app should display the items on the to-do list and list their status.
 
 **Atomic design**
 
-organisms: input field, to do list item(s)., clear completed button
-molecules: todo heading, no. of items left on the todo list
-atoms: text
+    organisms: input field, to do list item(s)., clear completed button
+
+    molecules: todo heading, no. of items left on the todo list
+
+    atoms: text
 
 **Procedural**
 
