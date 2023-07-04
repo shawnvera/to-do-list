@@ -1,6 +1,6 @@
 **MVP**
 
-The app should display the items on the to-do list and list their status.
+    The app should display the items on the to-do list and list their status.
 
 **MoSCoW**
 
@@ -36,49 +36,49 @@ The app should display the items on the to-do list and list their status.
 
 **Procedural**
 
-BEGIN 
-INIT - set variables, define functions, define components, define initial (persistent from localStorage or not) state, display UI
-INPUT - user inputs to-do item
-OUTPUT/RENDER - user input is output/rendered to the list
-END
+    BEGIN 
+    INIT - set variables, define functions, define components, define initial (persistent from localStorage or not) state, display UI
+    INPUT - user inputs to-do item
+    OUTPUT/RENDER - user input is output/rendered to the list
+    END
 
 **Functional**
 
-function uniqueId () {
-const secondsSinceEpoch = Math.round(Date.now() / 1000)
-toDoItem.id.value = secondsSinceEpoch;
-}
+    function uniqueId () {
+    const secondsSinceEpoch = Math.round(Date.now() / 1000)
+    toDoItem.id.value = secondsSinceEpoch;
+    }
 
 **OOP**
 
-To do item 
-    label - text
-    status - boolean or arrray ?
+    To do item 
+        label - text
+        status - boolean or arrray ?
 
 **REACT**
 
-State
-    items left - ?? store or compute
-    to do - list or array of items
-    view or view - to track what page or view we are in
-    pages or routes - all, active, completed etc... 
+    State
+        items left - ?? store or compute
+        to do - list or array of items
+        view or view - to track what page or view we are in
+        pages or routes - all, active, completed etc... 
 
 
-Components
+    Components
 
-ToDoList - render teh to do items, based on a filtered set of item in state
-DON'T DO THESE (to CONCRETE) ToDoListAll - ToDoListCompleted, ToDoListImportantUrgent
+        ToDoList - render teh to do items, based on a filtered set of item in state
+        DON'T DO THESE (to CONCRETE) ToDoListAll - ToDoListCompleted, ToDoListImportantUrgent
 
-ToDoItem
+    ToDoItem
 
-    Responsible for displaying item
+        Responsible for displaying item
 
-Responsible for creating/updating?
+    Responsible for creating/updating?
 
-FooterMenu or Menu
+    FooterMenu or Menu
 
-    Responsible for filtering
+        Responsible for filtering
 
-    Responsible for switching the views
+        Responsible for switching the views
 
-user input (data and functionality)
+    user input (data and functionality)
