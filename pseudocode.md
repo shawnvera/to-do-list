@@ -65,28 +65,38 @@
 **Functional**
 
     Variables:
-
         item
-
         activeItem
-
         completedItem
 
     Functions:   
+
+        function input () {
+            click event handler on "enter" - maybe insert a button as well??
+            move item to "active" - status in state?
+        }
     
         function uniqueId () {
-
             const secondsSinceEpoch = Math.round(Date.now() / 1000)
-
             toDoItem.id.value = secondsSinceEpoch; //add unique ID to toDoItem object.
-            
             }
+
+        function clear () {
+            click event handler on button
+            clears items - maybe just resets UI state??
+        }
+
+        function completed () {
+            click event handler on the radio button of the item
+            move item to "completed" - status in state??
+            changed item look by using strikethrough on text
+        }
 
 **OOP**
 
     To do item {
-        label - text
-        status - boolean or arrray ?
+        label - input text
+        status - boolean or arrray ? || "active" || "completed"
         id: result of uniqueId();
     }
 
@@ -97,25 +107,16 @@
         to do - list or array of items
         view or view - to track what page or view we are in
         pages or routes - all, active, completed etc... 
+        status: "active" || "completed"
 
 
     Components
+        Header {
+            display header "to do"
+        }
 
-        ToDoList
+        ToDoList {
             render the todo items
-            based on a filtered set of items in state
-                DON'T DO THESE (to CONCRETE) ToDoListAll - ToDoListCompleted, ToDoListImportantUrgent
-
-    ToDoItem
-
-        Responsible for displaying item
-
-    Responsible for creating/updating?
-
-    FooterMenu or Menu
-
-        Responsible for filtering
-
-        Responsible for switching the views
-
-    user input (data and functionality)
+                based on status of to do item obj?
+            Responsible for displaying item and different lists
+        }
