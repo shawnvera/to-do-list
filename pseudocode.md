@@ -20,11 +20,12 @@
 
     Could have:
         Create a flow diagram for the front end architecture to be used in an MVP
-        Edit To-Do's inline with a doubleclick Add a separate “Reminders” set of functionality
-        Add due dates and alarms to the to-dos that handle pop ups in your browser in an elegant fashion
         Automatically mark to-dos with a new status based on done/not done and the time it was due.
 
     Won't have:
+        proioritization view
+        Add due dates and alarms to the to-dos that handle pop ups in your browser in an elegant fashion
+        Edit To-Do's inline with a doubleclick Add a separate “Reminders” set of functionality
 
 **Atomic design**
 
