@@ -4,7 +4,7 @@
 
 **MoSCoW**
 
-    -must have:
+    Must have:
         Dynamically render the content with React using components
         Display all to-do list items
         Three "views" for the user: All, Completed, & To-Do (not completed)
@@ -14,25 +14,45 @@
         Check off or cross out all items in one click as a "completed all" function
         Ability to press a button and all checked off items become active again
 
-     -should have:
+     Should have:
         Remove all completed items (soft delete/archive)
         Use LocalStorage to persist data on a revisit or reloading of the page. With this implementation add a useEffect hook to access localStorage.
 
-    -could have:
+    Could have:
         Create a flow diagram for the front end architecture to be used in an MVP
         Edit To-Do's inline with a doubleclick Add a separate “Reminders” set of functionality
         Add due dates and alarms to the to-dos that handle pop ups in your browser in an elegant fashion
         Automatically mark to-dos with a new status based on done/not done and the time it was due.
 
-    -won't have:
+    Won't have:
 
 **Atomic design**
 
-    organisms: input field, to do list item(s)., clear completed button
+    Organisms: 
+        input field
+        to do list item(s)
+        clear completed button
 
-    molecules: todo heading, no. of items left on the todo list
+    Molecules: 
+        todo heading
+        no. of items left on the todo list
 
-    atoms: text
+    Atoms: 
+        text
+
+**KANBAN**
+
+    Stories:
+
+        As a user I want to enter an item, so I remember to complete this item
+        As a user I want to have the ability to mark an item as completed, so that the item is removed from my list
+        As a user I want to view completed items in a separate list, so that they can be viewed at a later time
+        As a user I want to view all items, so that I can see what has been completed and needs work
+        As a user I want to view active items in a list, so that I can see what is still outstanding
+        As a user I want a way to clear all completed items, so that all unnecessary items can be removed from view
+        As a user I want a view of how many opens items are left, so that I always have a clear view of how many items are left
+
+
 
 **Procedural**
 
@@ -44,16 +64,31 @@
 
 **Functional**
 
-    function uniqueId () {
-    const secondsSinceEpoch = Math.round(Date.now() / 1000)
-    toDoItem.id.value = secondsSinceEpoch;
-    }
+    Variables:
+
+        item
+
+        activeItem
+
+        completedItem
+
+    Functions:   
+    
+        function uniqueId () {
+
+            const secondsSinceEpoch = Math.round(Date.now() / 1000)
+
+            toDoItem.id.value = secondsSinceEpoch; //add unique ID to toDoItem object.
+            
+            }
 
 **OOP**
 
-    To do item 
+    To do item {
         label - text
         status - boolean or arrray ?
+        id: result of uniqueId();
+    }
 
 **REACT**
 
@@ -66,8 +101,10 @@
 
     Components
 
-        ToDoList - render teh to do items, based on a filtered set of item in state
-        DON'T DO THESE (to CONCRETE) ToDoListAll - ToDoListCompleted, ToDoListImportantUrgent
+        ToDoList
+            render the todo items
+            based on a filtered set of items in state
+                DON'T DO THESE (to CONCRETE) ToDoListAll - ToDoListCompleted, ToDoListImportantUrgent
 
     ToDoItem
 
