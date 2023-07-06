@@ -5,12 +5,12 @@ import './App.css';
 let toDoListItem = {
   "className": "text-decoration-line-through",
   "text": "What needs to be done?",
-  "completed": true
+  "active": true
 }
 
 
 
-function App(props) {
+function App() {
   const [data, setData] = useState([]);
   const [tempData, setTemp] = useState("");
 
@@ -19,49 +19,65 @@ function App(props) {
 
       //  get from tempData 
       // create new item stored using setData
-      let newToDo = setData(tempData);
+      setData(tempData);
       // get my to do list items
       let tempList = data; // proxy array
 
       // add new obj to tempList
-      let newTempItem = { text: tempData };
-
+      let newTempItem = { text: tempData, completed: false };
+      
       tempList.push(newTempItem);
+      
       // set state by pushing proxy array
       data.push(tempList);
+      filterData();
     }
   }
 
-let array = tempData;
-console.log(typeof data);
+  function activeToDo() {
+    // conditional statment on status of completed
+    if (toDoListItem.active === false) {
+      return <li>{toDoListItem.text}</li>
+    }
+  }
 
- 
+  function completedToDo() {
+    // if true keep these filtered
+    if (toDoListItem.active === true) {
+      return <li>{toDoListItem.text}</li>
+    }
+  }
 
+  function filterData() {
+    return
+        <li>
+          {toDoListItem.text}
+        </li>
+        }
+  
   return (
-    
     <>
-
       <div className="text-center">
         <label className="text-center">
-          <input type="text" placeholder={tempData}
+          <input type="text" placeholder={toDoListItem.text}
             onChange={e => setTemp(e.target.value)}
             onKeyDown={handleEvent}
           />
         </label>
       </div>
 
-
       <div className="list">
         <header>
 
+          <div className="text-center">
+          <button onClick={activeToDo}>Active</button>
+          <button onClick={completedToDo}>Completed</button>
+          <button onClick={filterData}>All</button>
+          </div>
+          
           {/*map through the data in state, display each toDoListItem*/}
           <ul>
-            {/*filteredLIst.map(item => item.toDoListItem.toDo)*/}
-          {data.filter(toDo => toDo.text).map(item => (
-            <li>
-              {item.text}
-            </li>
-            ))}
+            {filterData()}
           </ul>
         </header>
       </div>
