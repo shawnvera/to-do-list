@@ -4,8 +4,8 @@ import './App.css';
 
 let toDoListItem = {
   "className": "text-decoration-line-through",
-  "toDo": "What needs to be done?"
-
+  "text": "What needs to be done?",
+  "completed": true
 }
 
 
@@ -24,40 +24,44 @@ function App(props) {
       let tempList = data; // proxy array
 
       // add new obj to tempList
-      let newTempItem = { toDo: tempData };
+      let newTempItem = { text: tempData };
 
       tempList.push(newTempItem);
-
       // set state by pushing proxy array
-      //setData(tempList);
+      data.push(tempList);
     }
   }
 
-  let filteredList = data.filter(item => data.toDo);
+let array = tempData;
+console.log(typeof data);
+
+ 
 
   return (
+    
     <>
-      <form>
-        <div className="text-center">
-          <label className="text-center">
-            <input type="text" placeholder={tempData}
-              onChange={e => setTemp(e.target.value)}
-              onKeyDown={handleEvent}
-            />
-          </label>
-        </div>
-      </form>
+
+      <div className="text-center">
+        <label className="text-center">
+          <input type="text" placeholder={tempData}
+            onChange={e => setTemp(e.target.value)}
+            onKeyDown={handleEvent}
+          />
+        </label>
+      </div>
+
 
       <div className="list">
         <header>
 
           {/*map through the data in state, display each toDoListItem*/}
-
-          {/*filteredLIst.map(item => item.toDoListItem.toDo)*/}
-          <ul className="text-center">
+          <ul>
+            {/*filteredLIst.map(item => item.toDoListItem.toDo)*/}
+          {data.filter(toDo => toDo.text).map(item => (
             <li>
-              {toDoListItem.toDo}
+              {item.text}
             </li>
+            ))}
           </ul>
         </header>
       </div>
