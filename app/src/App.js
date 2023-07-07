@@ -1,7 +1,6 @@
 import { useState } from "react";
 import React from "react";
 import './App.css';
-import ToDoList from "./ToDoList";
 
 let toDoListItem = {
   "id": uniqueId,
@@ -11,7 +10,7 @@ let toDoListItem = {
 
 function uniqueId() {
   const secondsSinceEpoch = Math.round(Date.now() / 1000)
-  toDoItem.id.value = secondsSinceEpoch; //add unique ID to toDoItem object.
+  toDoListItem.id.value = secondsSinceEpoch; //add unique ID to toDoItem object.
 }
 
 function App() {
@@ -24,79 +23,80 @@ function App() {
       //  get from tempData 
       // create new item stored using setData
       setData(tempData);
-      // get my to do list items
+
+      // get my to do list items in a proxy array
       let tempList = data; // proxy array
 
       // add new obj to tempList
       let newTempItem = { text: tempData, complete: false };
 
-      tempList.push(newTempItem);
+      tempList.push({newTempItem});
 
       // set state by pushing proxy array
       data.push(tempList);
-      filterData();
+
+      // render
+      filterArray();
     }
   }
 
   function activeToDo() {
-    // conditional statment on status of completed
+    // conditional statment on status of complete === false
     if (toDoListItem.complete === false) {
       return <li>{toDoListItem.text}</li>
     }
   }
 
   function completedToDo() {
-    // if true keep these filtered
+    // conditional statment on status of complete === true
     if (toDoListItem.complete === true) {
       return <li>{toDoListItem.text}</li>
     }
   }
 
-  function filterData() {
-    return
+const filterArray = () => {
+  const filteredArray = tempData.filter(item => item.complete === false)
+   return <li>{filteredArray}</li>
+}
+
+
+{/*
+  function toDoItems() { data.map(() => 
+    // return list item of each to do item regardless of status of complete
     <li>
-      {toDoListItem.text}
+      {tempData.text}
     </li>
-  }
+)}
+  */}
+
 
   return (
     <>
-    <header>
-     
+      <header>
 
+        <div className="text-center">
+          <label className="text-center">
+            <input type="text" placeholder={toDoListItem.text}
+              onChange={e => setTemp(e.target.value)}
+              onKeyDown={handleEvent}>
+            </input>
+          </label>
+        </div>
 
-
-      <ToDoList toDoList={toDoList} />
-
-
-
-
-      {/* <div className="text-center">
-        <label className="text-center">
-          <input type="text" placeholder={toDoListItem.text}
-            onChange={e => setTemp(e.target.value)}
-            onKeyDown={handleEvent}
-          />
-        </label>
-      </div>
-
-      <div className="list">
-        <header>
+        <div className="list">
 
           <div className="text-center">
-          <button onClick={activeToDo}>Active</button>
-          <button onClick={completedToDo}>Completed</button>
-          <button onClick={filterData}>All</button>
+            <button onClick={activeToDo}>Active</button>
+            <button onClick={completedToDo}>Completed</button>
+            <button onClick={filterArray}>All</button>
           </div>
-          
-          // map through the data in state, display each toDoListItem
+
+          {/* // map through the data in state, display each toDoListItem */}
           <ul>
-            {filterData()}
-          </ul> */}
-
-
-
-    </header >
+            {filterArray()}
+          </ul>
+        </div>
+      </header >
     </>
   );
 }
