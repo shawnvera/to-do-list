@@ -1,14 +1,18 @@
 import { useState } from "react";
 import React from "react";
 import './App.css';
+import ToDoList from "./ToDoList";
 
 let toDoListItem = {
-  "className": "text-decoration-line-through",
+  "id": uniqueId,
   "text": "What needs to be done?",
-  "active": true
+  "complete": true
 }
 
-
+function uniqueId() {
+  const secondsSinceEpoch = Math.round(Date.now() / 1000)
+  toDoItem.id.value = secondsSinceEpoch; //add unique ID to toDoItem object.
+}
 
 function App() {
   const [data, setData] = useState([]);
@@ -24,10 +28,10 @@ function App() {
       let tempList = data; // proxy array
 
       // add new obj to tempList
-      let newTempItem = { text: tempData, completed: false };
-      
+      let newTempItem = { text: tempData, complete: false };
+
       tempList.push(newTempItem);
-      
+
       // set state by pushing proxy array
       data.push(tempList);
       filterData();
@@ -36,28 +40,38 @@ function App() {
 
   function activeToDo() {
     // conditional statment on status of completed
-    if (toDoListItem.active === false) {
+    if (toDoListItem.complete === false) {
       return <li>{toDoListItem.text}</li>
     }
   }
 
   function completedToDo() {
     // if true keep these filtered
-    if (toDoListItem.active === true) {
+    if (toDoListItem.complete === true) {
       return <li>{toDoListItem.text}</li>
     }
   }
 
   function filterData() {
     return
-        <li>
-          {toDoListItem.text}
-        </li>
-        }
-  
+    <li>
+      {toDoListItem.text}
+    </li>
+  }
+
   return (
     <>
-      <div className="text-center">
+    <header>
+     
+
+
+
+      <ToDoList toDoList={toDoList} />
+
+
+
+
+      {/* <div className="text-center">
         <label className="text-center">
           <input type="text" placeholder={toDoListItem.text}
             onChange={e => setTemp(e.target.value)}
@@ -75,12 +89,14 @@ function App() {
           <button onClick={filterData}>All</button>
           </div>
           
-          {/*map through the data in state, display each toDoListItem*/}
+          // map through the data in state, display each toDoListItem
           <ul>
             {filterData()}
-          </ul>
-        </header>
-      </div>
+          </ul> */}
+
+
+
+    </header >
     </>
   );
 }
