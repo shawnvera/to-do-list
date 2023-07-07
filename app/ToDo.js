@@ -1,9 +1,9 @@
-const ToDo = ({todo}) => {
+function ToDo({ todo }) {
     return (
         <div>
             {todo.task}
         </div>
-    )
+    );
 }
 
 export default ToDo;
